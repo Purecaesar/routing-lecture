@@ -1,0 +1,12 @@
+<h1>{{ name }}</h1>
+<main>
+  <div>
+    <fa-icon
+      *ngFor="let r of ratingRange"
+      class="fa-star"
+      [ngClass]="r <= rating ? 'fa-solid' : 'fa-regular'"
+    ></fa-icon>
+  </div>
+  <img [src]="poster"  alt=""/>
+</main>
+<p>{{ description }}</p>

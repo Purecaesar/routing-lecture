@@ -1,0 +1,13 @@
+<header>
+  <a>< previous book</a>
+  <a>next book ></a>
+</header>
+<main>
+  <rl-book-content
+    *ngIf="book$ | async as book"
+    [name]="book.name"
+    [poster]="book.poster"
+    [description]="book.description"
+    [rating]="book.rating"
+  ></rl-book-content>
+</main>
