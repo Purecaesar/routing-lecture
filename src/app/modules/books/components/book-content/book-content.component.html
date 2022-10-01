@@ -3,8 +3,7 @@
   <div>
     <fa-icon
       *ngFor="let r of ratingRange"
-      class="fa-star"
-      [ngClass]="r <= rating ? 'fa-solid' : 'fa-regular'"
+      [icon]="r <= rating ? starIconSolid : starIconRegular"
     ></fa-icon>
   </div>
   <img [src]="poster"  alt=""/>

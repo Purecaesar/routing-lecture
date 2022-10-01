@@ -9,6 +9,9 @@ const routes: Routes = [
   {
     path: '',
     component: BooksComponent,
+    data: {
+      bookIds: [1, 2, 3, 4],
+    },
     children: [
       {
         path: 'all',

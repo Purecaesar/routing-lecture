@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {pluck} from "rxjs";
+import {map, pluck} from "rxjs";
 import {Book} from "../../models/book.interface";
 
 @Component({
@@ -11,6 +11,23 @@ import {Book} from "../../models/book.interface";
 })
 export class BookComponent {
   public readonly book$ = this.ar.data.pipe<Book>(pluck('book'));
+  public readonly book = this.ar.snapshot.data['book'] as Book;
+
+
+
+
+
+  public readonly links$ = this.book$.pipe(
+    map(({ id }) => {
+      const allBooksIds = this.ar.snapshot.data['bookIds'] as number[];
+      const currIdIndex = allBooksIds.findIndex(bookId => id === bookId);
+
+      return {
+        prev: allBooksIds[currIdIndex - 1],
+        next: allBooksIds[currIdIndex + 1],
+      };
+    }),
+  );
 
   constructor(private readonly ar: ActivatedRoute) {
   }

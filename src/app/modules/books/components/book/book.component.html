@@ -1,10 +1,16 @@
-<header>
-  <a>< previous book</a>
-  <a>next book ></a>
+<header *ngIf="links$ | async as links">
+  <a [class.disabled]="!links.prev" [routerLink]="['../', links.prev]">< previous book</a>
+  <a [class.disabled]="!links.next" [routerLink]="['../', links.next]">next book ></a>
 </header>
 <main>
+<!--  <rl-book-content-->
+<!--    *ngIf="book$ | async as book"-->
+<!--    [name]="book.name"-->
+<!--    [poster]="book.poster"-->
+<!--    [description]="book.description"-->
+<!--    [rating]="book.rating"-->
+<!--  ></rl-book-content>-->
   <rl-book-content
-    *ngIf="book$ | async as book"
     [name]="book.name"
     [poster]="book.poster"
     [description]="book.description"
