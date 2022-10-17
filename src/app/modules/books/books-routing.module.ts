@@ -4,6 +4,7 @@ import {BooksComponent} from "./books.component";
 import {AllBooksComponent} from "./components/all-books/all-books.component";
 import {BookComponent} from "./components/book/book.component";
 import {BookResolverService} from "./services/book-resolver.service";
+import {BooksResolverService} from "./services/books-resolver.service";
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
       {
         path: 'all',
         component: AllBooksComponent,
+        resolve: {
+          books: BooksResolverService,
+        }
       },
       {
         path: ':id',
@@ -35,7 +39,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  providers: [BookResolverService],
+  providers: [BookResolverService, BooksResolverService],
   exports: [RouterModule],
 })
 export class BooksRoutingModule {

@@ -1,4 +1,7 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {pluck} from "rxjs";
+import {Book} from "../../models/book.interface";
 
 @Component({
   selector: 'rl-all-books',
@@ -8,4 +11,8 @@ import {ChangeDetectionStrategy, Component} from "@angular/core";
 })
 export class AllBooksComponent {
 
+  public books$ = this.acr.data.pipe<Book[]>(pluck('books'));
+
+  constructor(private readonly acr: ActivatedRoute) {
+  }
 }

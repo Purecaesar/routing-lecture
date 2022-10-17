@@ -1,5 +1,6 @@
 <header *ngIf="links$ | async as links">
   <a [class.disabled]="!links.prev" [routerLink]="['../', links.prev]">< previous book</a>
+  <a [routerLink]="['../', 'all']">All books</a>
   <a [class.disabled]="!links.next" [routerLink]="['../', links.next]">next book ></a>
 </header>
 <main>

@@ -1,3 +1,6 @@
 <main>
-
+  <a
+    *ngFor="let book of books$ | async"
+    [routerLink]="['../', book.id]"
+  >{{ book.name }}</a>
 </main>
