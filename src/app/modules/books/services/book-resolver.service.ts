@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve} from "@angular/router";
 import {Book} from "../models/book.interface";
 import books from '../mock/books';
-import {delay, map, of} from "rxjs";
+import {delay, map, of, tap} from "rxjs";
 
 @Injectable()
 export class BookResolverService implements Resolve<Book | null> {
@@ -12,6 +12,7 @@ export class BookResolverService implements Resolve<Book | null> {
     return of<Book[]>(books).pipe(
       delay(300),
       map(books => books.find(book => book.id === +id) || null),
+      tap(() => console.log('Data resolved!')),
     );
   }
 }

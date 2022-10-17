@@ -31,4 +31,8 @@ export class BookComponent {
 
   constructor(private readonly ar: ActivatedRoute) {
   }
+
+  ngOnInit() {
+    console.log('Component created');
+  }
 }
