@@ -4,17 +4,17 @@
   <a [class.disabled]="!links.next" [routerLink]="['../', links.next]">next book ></a>
 </header>
 <main>
-  <rl-book-content
-    *ngIf="book$ | async as book"
-    [name]="book.name"
-    [poster]="book.poster"
-    [description]="book.description"
-    [rating]="book.rating"
-  ></rl-book-content>
 <!--  <rl-book-content-->
+<!--    *ngIf="book$ | async as book"-->
 <!--    [name]="book.name"-->
 <!--    [poster]="book.poster"-->
 <!--    [description]="book.description"-->
 <!--    [rating]="book.rating"-->
 <!--  ></rl-book-content>-->
+  <rl-book-content
+    [name]="book.name"
+    [poster]="book.poster"
+    [description]="book.description"
+    [rating]="book.rating"
+  ></rl-book-content>
 </main>
